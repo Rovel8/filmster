@@ -24,7 +24,7 @@ export const GenreList: React.FC<IGenreList> = ({genres}) => {
             {genres.map((genre, index) => (
                 <div className={'genre-list__item'} key={index}>
                     <div className="genre-list__mask" />
-                    <Link href={'#'}>
+                    <Link href={`/genre/${genre.id}`}>
                         <a className={'genre-list__link'}>
                             <Image
                                 className={'genre-list__image'}
