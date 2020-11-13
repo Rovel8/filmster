@@ -1,0 +1,219 @@
+@media (max-width: 768px) {
+  body.lock {
+    overflow: hidden;
+  }
+}
+
+.header {
+  height: 60px;
+  position: fixed;
+  z-index: 40;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3c3354;
+  border-bottom: 1px solid white;
+  z-index: 5;
+}
+
+.header__container {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 400px) {
+  .header__container {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+.logo-header__title {
+  color: white;
+  font-family: Roboto, monospace;
+  font-size: 35px;
+  font-weight: 600;
+  position: relative;
+  z-index: 6;
+}
+
+@media (max-width: 400px) {
+  .logo-header__title {
+    display: none;
+  }
+}
+
+.nav-header {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+  z-index: 6;
+  -webkit-transition: all 300ms ease 0s;
+  transition: all 300ms ease 0s;
+}
+
+@media (max-width: 768px) {
+  .nav-header {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid white;
+    background-color: #3c3354;
+    z-index: 3;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 30%;
+            flex: 0 1 30%;
+    padding: 70px 0 0 0;
+  }
+  .nav-header.active {
+    top: 0;
+  }
+}
+
+.header__burger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header__burger {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    z-index: 6;
+  }
+  .header__burger span {
+    position: absolute;
+    background-color: #fff0f6;
+    left: 0;
+    top: 9px;
+    width: 100%;
+    height: 2px;
+    -webkit-transition: all 300ms ease 0s;
+    transition: all 300ms ease 0s;
+  }
+  .header__burger:before, .header__burger:after {
+    content: '';
+    background-color: #fff0f6;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    -webkit-transition: all 300ms ease 0s;
+    transition: all 300ms ease 0s;
+  }
+  .header__burger:before {
+    top: 0;
+  }
+  .header__burger:after {
+    bottom: 0;
+  }
+  .header__burger.active span {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  .header__burger.active:before {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    top: 9px;
+  }
+  .header__burger.active:after {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    bottom: 9px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__burger {
+    margin-left: -50px;
+  }
+}
+
+.nav-header__list {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-transform: uppercase;
+  font-family: Roboto, monospace;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .nav-header__list {
+    display: block;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .nav-header__list li {
+    margin: 0 0 30px 40px;
+  }
+}
+
+.nav-header__item {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-header__item:hover {
+  color: #dddbdb;
+  -webkit-transition: 150ms linear;
+  transition: 150ms linear;
+}
+
+.header__login {
+  z-index: 6;
+}
+
+.login-header__button {
+  padding: 0 40px;
+  z-index: 6;
+  border: none;
+  outline: none;
+  line-height: 35px;
+  border-radius: 2px;
+  font-size: 16px;
+  background-color: #5a4070;
+  font-family: Roboto, monospace;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease 0s;
+  transition: all 300ms ease 0s;
+}
+
+.login-header__button:hover {
+  background-color: #785b91;
+}
+
+.login-header__button:active {
+  background-color: #372647;
+}
+/*# sourceMappingURL=HeaderLayout.css.map */

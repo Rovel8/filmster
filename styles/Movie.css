@@ -1,0 +1,10 @@
+.movie__main {
+  background-color: #3c3354;
+  min-height: 100vh;
+}
+
+.movie__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=Movie.css.map */

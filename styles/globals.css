@@ -1,3 +1,13 @@
+@import "./Directory.css";
+@import "./genre.css";
+@import "./Home.css";
+@import "../components/GenreList/GenreList.css";
+@import "../components/layouts/HeaderLayout.css";
+@import "../components/MovieRow/MovieRow.css";
+@import "../components/MovieRowItem/MovieRowItem.css";
+@import "../components/SearchInput/SearchInput.css";
+@import "./Movie.css";
+
 *, *:before, *:after{
     box-sizing: border-box;
     margin: 0;

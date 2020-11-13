@@ -1,7 +1,5 @@
 import Head from "next/head";
-import './HeaderLayout.less';
 import Link from "next/link";
-import {Button} from "antd";
 import {useEffect} from "react";
 
 interface IHeaderLayout {
@@ -50,8 +48,7 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                         </ul>
                     </nav>
                     <div className={'header__login login-header'}>
-                        <Button size={'large'} type={'primary'}
-                                className={'login-header__button'}><span>Login</span></Button>
+                        <button className={'login-header__button'}><span>Log In</span></button>
                     </div>
                 </div>
             </header>

@@ -1,0 +1,119 @@
+.genre-list__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-top: 80px;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1000px) {
+  .genre-list__container {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 605px) {
+  .genre-list__container {
+    padding-top: 10px;
+  }
+}
+
+.genre-list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 10px 0 10px;
+  position: relative;
+}
+
+.genre-list__link {
+  line-height: 0;
+  position: relative;
+}
+
+.genre-list__link .genre-list__button {
+  display: none;
+}
+
+.genre-list__link:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.genre-list__link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.genre-list__link:hover .genre-list__button {
+  font-weight: 700;
+  color: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -15px;
+  z-index: 10;
+  background: none;
+  line-height: 28px;
+  padding: 0 15px;
+  border: 1px solid white;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease 0s;
+  transition: all 200ms ease 0s;
+  outline: none;
+}
+
+.genre-list__link:hover .genre-list__button:hover {
+  background: #5a4070;
+}
+
+.genre-list__link:hover .genre-list__button:active {
+  background-color: #372647;
+}
+
+.genre-list__link:hover:before, .genre-list__link:hover:after {
+  opacity: 1;
+}
+
+.genre-list__image {
+  display: block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.genre-list__title {
+  color: white;
+  font-family: Roboto, monospace;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=GenreList.css.map */

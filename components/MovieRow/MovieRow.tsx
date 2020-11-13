@@ -1,4 +1,4 @@
-import './MovieRow.less'
+
 import {IMovieRowItem, MovieRowItem} from "../MovieRowItem/MovieRowItem";
 import Link from "next/link";
 import {useEffect} from "react";
@@ -13,7 +13,7 @@ export const MovieRow: React.FC<IMovieRow> = ({results, title}) => {
 
     useEffect(() => {
         const list = document.querySelectorAll('.movie-row__list')
-        list.forEach(item => item.addEventListener('wheel', (e) => {
+        list.forEach(item => item.addEventListener('wheel', (e: any) => {
             if(e.deltaY > 0){
                 item.scrollLeft += 20;
             }else{

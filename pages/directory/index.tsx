@@ -1,5 +1,5 @@
 import {HeaderLayout} from "../../components/layouts/HeaderLayout";
-import '../../styles/Directory.less'
+
 import {directoryRequests} from "../../API/API_CatalogPage";
 import {GenreList} from "../../components/GenreList/GenreList";
 

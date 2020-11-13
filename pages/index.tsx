@@ -1,4 +1,4 @@
-import '../styles/Home.less'
+
 import {API_KEY} from "../API/API_KEY";
 import {HeaderLayout} from "../components/layouts/HeaderLayout";
 import {SearchInput} from "../components/SearchInput/SearchInput";

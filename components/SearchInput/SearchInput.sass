@@ -1,4 +1,33 @@
-.search-input__container {
-  max-width: 480px;
-  margin: 0 auto 50px auto;
-}
+.search-input__container
+  max-width: 480px
+  margin: 0 auto 50px auto
+
+.search-input__form
+  width: 100%
+  display: flex
+  justify-content: center
+
+.search-input__input
+  flex: 1 1 80%
+  border-radius: 2px
+  border: none
+  outline: none
+  padding-left: 10px
+  font-size: 16px
+
+.search-input__button
+  border-radius: 2px
+  flex: 0 1 20%
+  border: none
+  font-size: 15px
+  line-height: 30px
+  outline: none
+  background-color: #5a4070
+  color: white
+  font-family: Roboto, monospace
+  cursor: pointer
+  transition: all 300ms ease 0s
+  &:hover
+    background-color: #785b91
+  &:active
+    background-color: #3c3354

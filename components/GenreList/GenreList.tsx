@@ -1,8 +1,5 @@
-import React, {useEffect} from "react";
 import Image from "next/image";
-import './GenreList.less'
 import Link from "next/link";
-import {Button} from 'antd';
 
 interface IGenreList{
     genres: Array<IGenreListItem>
@@ -14,10 +11,6 @@ interface IGenreListItem{
 }
 
 export const GenreList: React.FC<IGenreList> = ({genres}) => {
-
-    useEffect(() => {
-
-    })
 
     return(
         <div className={'genre-list__container'}>
@@ -32,7 +25,7 @@ export const GenreList: React.FC<IGenreList> = ({genres}) => {
                                 height={120}
                                 src={`/${genre.name}.jpg`}
                             />
-                            <Button type={'primary'} className={'genre-list__button'}>View</Button>
+                            <button className={'genre-list__button'}>View</button>
                         </a>
                     </Link>
                     <h2 className={'genre-list__title'}>{genre.name}</h2>

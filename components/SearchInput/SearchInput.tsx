@@ -1,19 +1,14 @@
-import './SearchInput.less';
-import {Input} from 'antd';
-
 
 export const SearchInput = () => {
 
-    const {Search} = Input
 
     return(
         <>
             <div className={'search-input__container'}>
-                {/*<form className={styles.mainSearch__form} action="">*/}
-                {/*    <input className={styles.form__input} type="text"/>*/}
-                {/*    <button className={styles.form__button}>Hello</button>*/}
-                {/*</form>*/}
-                <Search placeholder="input search text" enterButton />
+                <form className={'search-input__form'} action="">
+                    <input placeholder={'Find a movie'} className={'search-input__input'} type="text"/>
+                    <button className={'search-input__button'}>Search</button>
+                </form>
             </div>
             </>
     )
