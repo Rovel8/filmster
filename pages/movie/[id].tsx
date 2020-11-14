@@ -1,16 +1,29 @@
-import { movieRequests } from "../../API/API_MoviePage";
-import { HeaderLayout } from "../../components/layouts/HeaderLayout";
-interface IMovie{
+import {movieRequests} from "../../API/API_MoviePage";
+import {HeaderLayout} from "../../components/layouts/HeaderLayout";
+import Image from "next/image";
+import {FieldTimeOutlined} from "@ant-design/icons";
+import YouTube from "react-youtube";
+
+interface IMovie {
     videos: {
         id: number
-        results: Array<any>
+        results: Array<{
+            id: string
+            iso_639_1: string
+            iso_3166_1: string
+            key: string
+            name: string
+            site: string
+            size: number
+            type: string
+        }>
     }
     query: string
     movie: {
         adult: boolean
         backdrop_path: string
         budget: number
-        genres: Array<{id: number, name: string}>
+        genres: Array<{ id: number, name: string }>
         homepage: string
         id: number
         imdb_id: string
@@ -19,12 +32,17 @@ interface IMovie{
         overview: string
         popularity: number
         poster_path: string
-        production_companies: Array<{id: number, logo_path: string, name: string, origin_country: string}>
-        production_countries: Array<{iso_3166_1: string, name: string}>
+        production_companies: Array<{
+            id: number
+            logo_path: string
+            name: string
+            origin_country: string
+        }>
+        production_countries: Array<{ iso_3166_1: string, name: string }>
         release_date: string
         revenue: number
         runtime: number
-        spoken_languages: Array<{iso_639_1: string, name: string}>
+        spoken_languages: Array<{ iso_639_1: string, name: string }>
         status: string
         tagline: string
         title: string
@@ -34,30 +52,49 @@ interface IMovie{
     }
 }
 
-export default function Movie ({query, movie, videos}: IMovie){
+export default function Movie({query, movie, videos}: IMovie) {
 
-    console.log(query)
-    console.log(movie)
-    console.log(videos)
+    let youTubeVideoWidth = '100%';
+    let youTubeVideoHeight = '390';
 
-    return(
+    return (
             <HeaderLayout title={'movie'}>
                 <main className="movie__main">
                     <div className="movie__container">
                         <section className="movie__header">
                             <aside className="movie__poster">
-
+                                <Image
+                                    className={'movie__image'}
+                                    width={260}
+                                    height={380}
+                                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                />
                             </aside>
-                            <div className="movie__title">
-
-                            </div>
                             <div className="movie__description">
-
+                                <h1 className="movie__title">{movie.title}</h1>
+                                <div className="movie__overview">
+                                    <p>{movie.overview}</p>
+                                </div>
+                                <div className="movie__runtime">
+                                    <FieldTimeOutlined />
+                                    <span>{movie.runtime} min</span>
+                                </div>
                             </div>
                         </section>
+                        <hr/>
                         <section className="movie__body">
                             <div className="movie__player">
-                                
+                                {
+                                    videos.results.length ?
+                                        <YouTube
+                                            opts={{
+                                                width: youTubeVideoWidth,
+                                                height: youTubeVideoHeight
+                                            }}
+                                            videoId={videos.results[0].key}
+                                        /> :
+                                        ''
+                                }
                             </div>
                         </section>
                     </div>
@@ -72,8 +109,8 @@ export async function getServerSideProps(context) {
     const movie = await movieRequests.getMovie(query)
     const videos = await movieRequests.getMovieVideos(query)
 
-    return{
-        props:{
+    return {
+        props: {
             query,
             movie,
             videos

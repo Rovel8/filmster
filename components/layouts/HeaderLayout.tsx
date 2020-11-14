@@ -12,16 +12,18 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
         const burger = document.querySelector('.header__burger')
         const menu = document.querySelector('.nav-header')
         const body = document.body
-        burger.addEventListener('click', () => {
+        function addBurgerEL() {
             burger.classList.toggle('active');
             menu.classList.toggle('active');
             body.classList.toggle('lock');
-        })
-        return burger.removeEventListener('click', () => {
-            burger.classList.toggle('active');
-            menu.classList.toggle('active');
-        })
+        }
+        burger.addEventListener('click', addBurgerEL)
+
     }, [])
+
+    useEffect(() => {
+        document.body.classList.remove('lock')
+    }, [title])
 
     return (
         <>
