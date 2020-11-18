@@ -1,0 +1,69 @@
+.login__form
+
+.form-modal
+  display: flex
+  flex-direction: column
+  justify-content: space-evenly
+  height: 100%
+  width: 100%
+  font-family: Roboto, monospace
+
+.form-login__title
+  text-align: center
+
+.form-modal__item
+  position: relative
+
+.form-item
+  width: 100%
+  height: 50px
+  line-height: 24px
+  border: 1px solid #c8c5c5
+  border-radius: 3px
+  padding-left: 10px
+  font-size: 16px
+  &:focus
+    border: 1px solid #5a4070
+    outline: none
+
+.form-login__show
+  position: absolute
+  right: 5%
+  top: 32%
+  &:hover
+    color: grey
+    cursor: pointer
+
+.form-login__button
+  height: 50px
+  border-radius: 3px
+  border: none
+  outline: none
+  background-color: #5a4070
+  color: white
+  font-size: 16px
+  cursor: pointer
+  font-weight: 700
+  &:hover
+    background-color: #785b91
+  &:active
+    background-color: #372647
+
+.close-modal
+  position: absolute
+  padding: 14px 20px
+  top: 3%
+  right: 3%
+  border: none
+  outline: none
+  background-color: white
+  font-size: 20px
+  cursor: pointer
+
+.login-signup
+  display: flex
+  flex-direction: column
+  align-items: center
+  position: absolute
+  bottom: 3%
+  left: 5%

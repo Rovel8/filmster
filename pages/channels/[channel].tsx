@@ -6,7 +6,7 @@ import useGenreMovies from '../../hooks/useGenreMovies';
 import {HeaderLayout} from "../../components/layouts/HeaderLayout";
 import {genres} from "../../assets/genres";
 
-export default function Genre({ query, movies }) {
+export default function Channels({ query, movies }) {
 
     const [pageNumber, setPageNumber] = useState(1);
     const observer = useRef<any>();
@@ -62,6 +62,10 @@ export async function getServerSideProps(context) {
 
     const query = context.query.genre
     const movies = await genreRequests.getGenreMovies(query)
+
+    if(query === 'mostPopular'){
+
+    }
 
     return {
         props: {
