@@ -1,12 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
+import ModalPopup from "../ModalPopup/ModalPopup";
+import {Field, Form} from "formik";
+import {EyeInvisibleOutlined} from "@ant-design/icons";
 
 interface IHeaderLayout {
     title: string
 }
 
 export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
+
+    const [modal, setModal] = useState(false)
+    const [visible, setVisible] = useState(false);
+
+    const showPass = () => {
+        const show = document.querySelector('.form-login__password')
+        setVisible(!visible)
+        if(visible) show.setAttribute('type', 'text')
+        else show.setAttribute('type', 'password')
+
+    }
 
     useEffect(() => {
         const burger = document.querySelector('.header__burger')
@@ -32,10 +46,20 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                 <meta charSet={'UTF-8'}/>
             </Head>
             <header className={'header'}>
+                <ModalPopup formTitle={'Authorize'} setModal={setModal} modal={modal}>
+                    <div className={'form-modal__item'}>
+                        <Field className={'form-item'} placeholder={'Email'} name={'email'} id={'email'} type={'email'} />
+                    </div>
+                    <div className={'form-modal__item'}>
+                        <Field placeholder={'Password'} className={'form-login__password form-item'} name={'password'} id={'password'} type={'password'} />
+                        <span onClick={() => showPass()} className={'form-login__show'}><EyeInvisibleOutlined /></span>
+                    </div>
+                    <button type={'submit'} className={'form-login__button'}>Log In or Sign Up</button>
+                </ModalPopup>
                 <div className={'header__container'}>
                     <div className={'header__logo logo-header'}>
                         <div className={'logo-header__title'}>
-                            <span>OHAYO</span>
+                            <Link href={'/'}><a><span>OHAYO</span></a></Link>
                         </div>
                     </div>
                     <div className={'header__burger'}>
@@ -43,14 +67,14 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                     </div>
                     <nav className={'header__nav nav-header'}>
                         <ul className={'nav-header__list'}>
-                            <li><Link href={'/newReleases'}><a className={'nav-header__item'}>Upcoming</a></Link>
+                            <li><Link href={'/channels/Upcoming'}><a className={'nav-header__item'}>Upcoming</a></Link>
                             </li>
                             <li><Link href='/'><a className={'nav-header__item'}>Home</a></Link></li>
                             <li><Link href={'/directory'}><a className={'nav-header__item'}>Directory</a></Link></li>
                         </ul>
                     </nav>
                     <div className={'header__login login-header'}>
-                        <button className={'login-header__button'}><span>Log In</span></button>
+                        <button onClick={() => setModal(!modal)} className={'login-header__button'}><span>Log In</span></button>
                     </div>
                 </div>
             </header>

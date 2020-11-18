@@ -1,5 +1,3 @@
-
-import {API_KEY} from "../API/API_KEY";
 import {HeaderLayout} from "../components/layouts/HeaderLayout";
 import {SearchInput} from "../components/SearchInput/SearchInput";
 import {MovieRow} from "../components/MovieRow/MovieRow";
@@ -14,19 +12,19 @@ export default function Home({popular, upcoming, topRated, dramas, comedy}) {
                     <SearchInput/>
                 </section>
                 <section className={'main__popular'}>
-                    <MovieRow title={'MOST POPULAR'} results={popular.results}/>
+                    <MovieRow channel={'Most Popular'} title={'MOST POPULAR'} results={popular.results}/>
                 </section>
                 <section className={'main__new-releases'}>
-                    <MovieRow title={'UPCOMING'} results={upcoming.results}/>
+                    <MovieRow channel={'Upcoming'} title={'UPCOMING'} results={upcoming.results}/>
                 </section>
                 <section className={'main__top-rated'}>
-                    <MovieRow title={'TOP RATED'} results={topRated.results} />
+                    <MovieRow channel={'Top Rated'} title={'TOP RATED'} results={topRated.results} />
                 </section>
                 <section className={'main__dramas'}>
-                    <MovieRow title={'DRAMAS'} results={dramas.results} />
+                    <MovieRow channel={'18'} title={'DRAMAS'} results={dramas.results} />
                 </section>
                 <section>
-                    <MovieRow title={'COMEDY'} results={comedy.results} />
+                    <MovieRow channel={'35'} title={'COMEDY'} results={comedy.results} />
                 </section>
             </main>
         </HeaderLayout>
@@ -35,11 +33,11 @@ export default function Home({popular, upcoming, topRated, dramas, comedy}) {
 
 export async function getStaticProps() {
 
-    const popular = await homeRequests.getPopularMovies(API_KEY)
-    const upcoming = await homeRequests.getUpcomingMovies(API_KEY)
-    const topRated = await homeRequests.getTopRatedMovies(API_KEY)
-    const dramas = await homeRequests.getPopularDramas(API_KEY)
-    const comedy = await homeRequests.getPopularComedies(API_KEY)
+    const popular = await homeRequests.getPopularMovies()
+    const upcoming = await homeRequests.getUpcomingMovies()
+    const topRated = await homeRequests.getTopRatedMovies()
+    const dramas = await homeRequests.getPopularDramas()
+    const comedy = await homeRequests.getPopularComedies()
 
     return {
         props: {

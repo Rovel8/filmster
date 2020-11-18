@@ -24,9 +24,7 @@ const customStyles={
     }
 };
 
-export default function ModalPopup({modal, setModal, children, buttonTitle, formTitle}){
-
-
+export default function ModalPopup({modal, setModal, children, formTitle}){
 
     const closeModal = () => {
         setModal(!modal)
@@ -57,7 +55,6 @@ export default function ModalPopup({modal, setModal, children, buttonTitle, form
                 <Form className={'form-modal'}>
                     <h1 className={'form-login__title'}>{formTitle}</h1>
                     {children}
-                    <button type={'submit'} className={'form-login__button'}>{buttonTitle}</button>
                 </Form>
             </Formik>
             <button className={'close-modal'} onClick={() => closeModal()}><CloseOutlined /></button>

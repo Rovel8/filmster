@@ -1,5 +1,3 @@
-.login__form
-
 .form-modal
   display: flex
   flex-direction: column
@@ -60,10 +58,11 @@
   font-size: 20px
   cursor: pointer
 
-.login-signup
-  display: flex
-  flex-direction: column
-  align-items: center
-  position: absolute
-  bottom: 3%
-  left: 5%
+@media ( max-width:  640px)
+  .ReactModal__Content
+    width: 400px !important
+    height: 350px !important
+
+@media (max-width: 430px)
+  .ReactModal__Content
+    width: 300px !important

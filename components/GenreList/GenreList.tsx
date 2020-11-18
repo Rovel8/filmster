@@ -13,22 +13,21 @@ interface IGenreListItem{
 export const GenreList: React.FC<IGenreList> = ({genres}) => {
 
     return(
-        <div className={'genre-list__container'}>
-            {genres.map((genre, index) => (
-                <div className={'genre-list__item'} key={index}>
-                    <div className="genre-list__mask" />
-                    <Link href={`/genre/${genre.id}`}>
-                        <a className={'genre-list__link'}>
+        <div className={'channels-list__container'}>
+            {genres.map((channel, index) => (
+                <div className={'channels-list__item'} key={index}>
+                    <Link href={`/channels/${channel.id}`}>
+                        <a className={'channels-list__link'}>
                             <Image
-                                className={'genre-list__image'}
+                                className={'channels-list__image'}
                                 width={180}
                                 height={120}
-                                src={`/${genre.name}.jpg`}
+                                src={`/${channel.name}.jpg`}
                             />
-                            <button className={'genre-list__button'}>View</button>
+                            <button className={'channels-list__button'}>View</button>
                         </a>
                     </Link>
-                    <h2 className={'genre-list__title'}>{genre.name}</h2>
+                    <h2 className={'channels-list__title'}>{channel.name}</h2>
                 </div>
             ))}
         </div>

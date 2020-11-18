@@ -6,8 +6,6 @@ import {GenreList} from "../../components/GenreList/GenreList";
 
 export default function Directory ({genre}){
 
-    console.log(genre.genres)
-
     return(
         <HeaderLayout title={'Directory Page'}>
             <main className="directory">
@@ -18,6 +16,7 @@ export default function Directory ({genre}){
 }
 
 export async function getStaticProps() {
+
     const genre = await directoryRequests.getGenreList()
 
     return {

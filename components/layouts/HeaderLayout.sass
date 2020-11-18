@@ -1,7 +1,6 @@
-@media (max-width: 768px)
-  body
-    &.lock
-      overflow: hidden
+body
+  &.lock
+    overflow: hidden
 
 .header
   height: 60px
@@ -10,6 +9,7 @@
   width: 100%
   top: 0
   left: 0
+  overflow-y: hidden
 
 
 .header:before
@@ -37,14 +37,17 @@
 
 
 .logo-header__title
-  color: white
-  font-family: Roboto, monospace
-  font-size: 35px
-  font-weight: 600
-  position: relative
-  z-index: 6
-  @media (max-width: 400px)
-    display: none
+  a
+    color: white
+    text-decoration: none
+    font-family: Roboto, monospace
+    font-size: 35px
+    font-weight: 600
+    position: relative
+    z-index: 6
+    cursor: pointer
+    @media (max-width: 400px)
+      display: none
 
 
 
@@ -176,4 +179,5 @@
     background-color: #785b91
   &:active
     background-color: #372647
+
 
