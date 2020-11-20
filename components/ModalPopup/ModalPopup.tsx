@@ -1,7 +1,13 @@
 import Modal from 'react-modal';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {Field, Form, Formik} from "formik";
 import {CloseOutlined, EyeInvisibleOutlined} from "@ant-design/icons";
+import 'firebase/auth'
+import firebase from 'firebase'
+import initFirebase from '../../assets/firebase';
+import { useRouter } from 'next/router';
+import { MyContext } from '../../pages/_app';
+
 
 
 Modal.setAppElement('#__next');
@@ -24,7 +30,25 @@ const customStyles={
     }
 };
 
+initFirebase()
+
 export default function ModalPopup({modal, setModal, children, formTitle}){
+
+    const onSubmit = ({email, password}) => {
+        firebase.auth().setPersistence('local').then(() => {
+            return firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
+                if(user){
+                    closeModal()
+                }
+            }).catch((error) => {
+                if(error.code === 'auth/user-not-found'){
+                    firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+                        closeModal()
+                    })
+                }
+            })
+        })
+    }
 
     const closeModal = () => {
         setModal(!modal)
@@ -38,10 +62,6 @@ export default function ModalPopup({modal, setModal, children, formTitle}){
     const initialValues = {
         email: '',
         password: ''
-    }
-
-    const onSubmit = (values) => {
-        console.log(values)
     }
 
     return(

@@ -1,9 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import ModalPopup from "../ModalPopup/ModalPopup";
 import {Field, Form} from "formik";
 import {EyeInvisibleOutlined} from "@ant-design/icons";
+import 'firebase/auth'
+import firebase from 'firebase'
+import { useRouter } from "next/router";
+import { MyContext } from "../../pages/_app";
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
+const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />;
 
 interface IHeaderLayout {
     title: string
@@ -13,6 +21,8 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
 
     const [modal, setModal] = useState(false)
     const [visible, setVisible] = useState(false);
+    const context = useContext(MyContext)
+    let btnLabe = context.logged ? 'Log Out' : 'Log In'
 
     const showPass = () => {
         const show = document.querySelector('.form-login__password')
@@ -20,6 +30,10 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
         if(visible) show.setAttribute('type', 'text')
         else show.setAttribute('type', 'password')
 
+    }
+
+    const logOut = () => {
+        firebase.auth().signOut()
     }
 
     useEffect(() => {
@@ -32,7 +46,6 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
             body.classList.toggle('lock');
         }
         burger.addEventListener('click', addBurgerEL)
-
     }, [])
 
     useEffect(() => {
@@ -74,7 +87,8 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                         </ul>
                     </nav>
                     <div className={'header__login login-header'}>
-                        <button onClick={() => setModal(!modal)} className={'login-header__button'}><span>Log In</span></button>
+                        <button disabled={!context.initialized} onClick={() => {context.logged ? logOut() : setModal(!modal)}} 
+                        className={'login-header__button'}><span>{context.initialized ? btnLabe : <Spin indicator={antIcon} />}</span></button>
                     </div>
                 </div>
             </header>
