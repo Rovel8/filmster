@@ -6,6 +6,7 @@ import firebase from 'firebase'
 interface IContext{
   logged: boolean
   initialized: boolean
+  userId: string
   setLogged: (value: boolean) => void
 }
 
@@ -15,11 +16,13 @@ function MyApp({ Component, pageProps }) {
 
   const [logged, setLogged] = useState(false)
   const [initialized, setInitialized] = useState(false)
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
         if(user){
             console.log(user)
+            setUserId(user.uid)
             setLogged(true)
             setInitialized(true)
         }else{
@@ -31,7 +34,7 @@ function MyApp({ Component, pageProps }) {
 }, [])
 
   return (
-    <MyContext.Provider value={{logged, setLogged, initialized}}>
+    <MyContext.Provider value={{logged, setLogged, initialized, userId}}>
       <Component {...pageProps} />
     </MyContext.Provider>
   )

@@ -44,6 +44,10 @@ export default function ModalPopup({modal, setModal, children, formTitle}){
                 if(error.code === 'auth/user-not-found'){
                     firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
                         closeModal()
+                        firebase.firestore().collection('users').doc(user.user.uid).set({
+                            email: user.user.email,
+                            uid: user.user.uid
+                        }, {merge: true})
                     })
                 }
             })

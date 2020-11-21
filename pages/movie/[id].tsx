@@ -1,8 +1,12 @@
 import {movieRequests} from "../../API/API_MoviePage";
 import {HeaderLayout} from "../../components/layouts/HeaderLayout";
 import Image from "next/image";
-import {FieldTimeOutlined} from "@ant-design/icons";
+import {FieldTimeOutlined, HeartOutlined} from "@ant-design/icons";
 import YouTube from "react-youtube";
+import firebase from 'firebase'
+import 'firebase/auth'
+import { MyContext } from "../_app";
+import { useContext } from 'react'
 
 interface IMovie {
     videos: {
@@ -57,6 +61,19 @@ export default function Movie({query, movie, videos}: IMovie) {
     let youTubeVideoWidth = '100%';
     let youTubeVideoHeight = '390';
 
+    const context = useContext(MyContext)
+    const userId = context.userId
+
+    const addToFavoriteList = () => {
+        firebase.firestore().collection('movies').doc(`${movie.id}`).set({
+            id: movie.id,
+            poster_path: movie.poster_path
+        })
+        firebase.firestore().doc(`users/${userId}`).set({
+            favorites: firebase.firestore.FieldValue.arrayUnion(`${movie.id}`)
+        }, {merge: true})
+    }
+
     return (
             <HeaderLayout title={'movie'}>
                 <main className="movie__main">
@@ -72,12 +89,20 @@ export default function Movie({query, movie, videos}: IMovie) {
                             </aside>
                             <div className="movie__description">
                                 <h1 className="movie__title">{movie.title}</h1>
-                                <div className="movie__overview">
-                                    <p>{movie.overview}</p>
-                                </div>
-                                <div className="movie__runtime">
-                                    <FieldTimeOutlined />
-                                    <span>{movie.runtime} min</span>
+                                 <div className="movie__overview">
+                                     <p>{movie.overview}</p>
+                                 </div>
+                                 <div className="movie__more">
+                                        <div className="movie__runtime">
+                                         <FieldTimeOutlined />
+                                         <span>{movie.runtime} min</span>
+                                    </div>
+                                    <div className="movie__favorite favorite-movie">
+                                       {context.logged &&  <button onClick={() => addToFavoriteList()} className={'favorite-movie__button'}>
+                                            <HeartOutlined className={'favorite-movie__icon'} />
+                                            <span>Add to favorite</span>
+                                        </button>}
+                                    </div>
                                 </div>
                             </div>
                         </section>

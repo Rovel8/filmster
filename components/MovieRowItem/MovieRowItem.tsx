@@ -12,8 +12,6 @@ export const MovieRowItem: React.FC<IMovieRowItem> = ({
     poster_path
 }) => {
 
-
-
     const addDefaultImg = (e) => {
     }
 

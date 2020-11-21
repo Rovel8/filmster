@@ -23,6 +23,7 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
     const [visible, setVisible] = useState(false);
     const context = useContext(MyContext)
     let btnLabe = context.logged ? 'Log Out' : 'Log In'
+    const userId = context.userId
 
     const showPass = () => {
         const show = document.querySelector('.form-login__password')
@@ -84,6 +85,7 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                             </li>
                             <li><Link href='/'><a className={'nav-header__item'}>Home</a></Link></li>
                             <li><Link href={'/directory'}><a className={'nav-header__item'}>Directory</a></Link></li>
+                            {context.logged && <li><Link href={`/personal/${userId}`}><a className={'nav-header__item'}>Favorite</a></Link></li>}
                         </ul>
                     </nav>
                     <div className={'header__login login-header'}>
