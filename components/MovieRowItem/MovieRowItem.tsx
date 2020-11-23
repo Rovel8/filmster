@@ -3,12 +3,10 @@ import Image from "next/image";
 export interface IMovieRowItem {
     id: number
     poster_path: string
-    title: string
 }
 
 export const MovieRowItem: React.FC<IMovieRowItem> = ({
     id,
-    title,
     poster_path
 }) => {
 
@@ -25,7 +23,6 @@ export const MovieRowItem: React.FC<IMovieRowItem> = ({
                             className={'movie-item__image'}
                                onError={(e) => addDefaultImg(e)}
                             width={220}
-                            alt={title}
                             height={350}
                             src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         />

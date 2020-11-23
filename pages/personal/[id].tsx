@@ -1,26 +1,48 @@
-import { useRouter } from "next/router";
 import { MyContext } from "../_app";
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Spin } from "antd";
-import { GetServerSideProps } from 'next'
 import firebase from 'firebase'
 import initFirebase from "../../assets/firebase";
-import { initializeApp } from "firebase-admin";
+import { HeaderLayout } from "../../components/layouts/HeaderLayout";
+import { PersonalItem } from "../../components/PersonalItem/PersonalItem";
 
-export default function Personal() {
+initFirebase()
 
-    const context = useContext(MyContext)
-    const router = useRouter()
+export default function Personal({uid}) {
+
+    const context = useContext(MyContext);
+    const [data, setData] = useState<any>({});
+    
+    useEffect(() => {
+        firebase.firestore().doc(`users/${uid}`).onSnapshot(snapshot => {
+            setData(snapshot.data())
+        })
+    }, [])
 
     return (
-        <div>
+        <HeaderLayout title={'Favorite Movies'}>
             {
                 context.initialized ? 
-                <main className="personal-page__main">
-
+                <main className="favorites__main">
+                    <div className="favorites__container">
+                        <ul className="favorites__list list-favorites">
+                            {data.favorites ? data.favorites.map((movie, index) => (
+                                <PersonalItem key={movie.id} setData={setData} id={movie.id} poster_path={movie.poster_path} />
+                            )) : ''}
+                        </ul>
+                    </div>
                 </main>
                 :  <Spin />  
             }
-        </div>
+        </HeaderLayout>
     );
+}
+
+export async function getServerSideProps(context) {
+    const uid = context.query.id;
+    return{
+        props:{
+            uid
+        }
+    }
 }

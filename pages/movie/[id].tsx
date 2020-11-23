@@ -65,12 +65,8 @@ export default function Movie({query, movie, videos}: IMovie) {
     const userId = context.userId
 
     const addToFavoriteList = () => {
-        firebase.firestore().collection('movies').doc(`${movie.id}`).set({
-            id: movie.id,
-            poster_path: movie.poster_path
-        })
         firebase.firestore().doc(`users/${userId}`).set({
-            favorites: firebase.firestore.FieldValue.arrayUnion(`${movie.id}`)
+            favorites: firebase.firestore.FieldValue.arrayUnion({id: movie.id, poster_path: movie.poster_path})
         }, {merge: true})
     }
 

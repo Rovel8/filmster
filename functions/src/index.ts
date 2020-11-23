@@ -8,20 +8,14 @@ import admin = require('firebase-admin');
 const app = admin.initializeApp();
 const db = app.firestore();
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.send("Hello World from Firebase!");
-});
-
-export const getFavorites = functions.https.onRequest( async (request, response) => {
-    const userId = request.query.uid;
-    if(userId){
-        response.send(`I am going to get favorites for user ${userId}`);
-        const snapshot = await db.collection('users').limit(1).get();
-        snapshot.forEach(docSnap => {
-            console.log(docSnap.data());
-        })
+export const getFavorites = functions.https.onCall(async (data, context) => {
+    const uid = data.uid
+    if(uid){
+        const userDoc = await db.doc(`users/${uid}`).get();
+        const userData = userDoc.data();
+        return userData
     }else{
-        response.send('No user ID')
+        return {}
     }
-});
 
+})
