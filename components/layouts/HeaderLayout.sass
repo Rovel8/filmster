@@ -11,7 +11,6 @@ body
   left: 0
   overflow-y: hidden
 
-
 .header:before
   content: ''
   position: absolute
@@ -23,7 +22,6 @@ body
   border-bottom: 1px solid white
   z-index: 5
 
-
 .header__container
   width: 100%
   height: 60px
@@ -33,8 +31,6 @@ body
   align-items: center
   @media (max-width: 400px)
     justify-content: space-around
-
-
 
 .logo-header__title
   a
@@ -48,8 +44,6 @@ body
     cursor: pointer
     @media (max-width: 400px)
       display: none
-
-
 
 .nav-header
   flex: 0 1 50%
@@ -71,9 +65,6 @@ body
     &.active
       top: 0
 
-
-
-
 .header__burger
   display: none
   @media (max-width: 768px)
@@ -91,7 +82,6 @@ body
       height: 2px
       transition: all 300ms ease 0s
 
-
     &:before,
     &:after
       content: ''
@@ -102,20 +92,15 @@ body
       left: 0
       transition: all 300ms ease 0s
 
-
     &:before
       top: 0
-
 
     &:after
       bottom: 0
 
-
     &.active
       span
         transform: scale(0)
-
-
 
     &.active:before
       transform: rotate(45deg)
@@ -125,12 +110,8 @@ body
       transform: rotate(-45deg)
       bottom: 9px
 
-
   @media (max-width: 400px)
     margin-left: -50px
-
-
-
 
 .nav-header__list
   list-style-type: none
@@ -147,17 +128,17 @@ body
     li
       margin: 0 0 30px 40px
 
-
-
-
 .nav-header__item
   color: white
   text-decoration: none
   font-size: 18px
-
   &:hover
     color: #dddbdb
     transition: 150ms linear
+  @media ( max-width: 1010px )
+    font-size: 14px
+  @media ( max-width: 768px )
+    font-size: 18px
 
 .header__login
   z-index: 6
@@ -179,5 +160,3 @@ body
     background-color: #785b91
   &:active
     background-color: #372647
-
-

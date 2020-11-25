@@ -1,8 +1,7 @@
-@media (max-width: 768px) {
-  body.lock {
-    overflow: hidden;
-  }
+body.lock {
+  overflow: hidden;
 }
+
 .header {
   height: 60px;
   position: fixed;
@@ -10,10 +9,11 @@
   width: 100%;
   top: 0;
   left: 0;
+  overflow-y: hidden;
 }
 
 .header:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -28,35 +28,50 @@
   width: 100%;
   height: 60px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 @media (max-width: 400px) {
   .header__container {
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 }
 
-.logo-header__title {
+.logo-header__title a {
   color: white;
+  text-decoration: none;
   font-family: Roboto, monospace;
   font-size: 35px;
   font-weight: 600;
   position: relative;
   z-index: 6;
+  cursor: pointer;
 }
+
 @media (max-width: 400px) {
-  .logo-header__title {
+  .logo-header__title a {
     display: none;
   }
 }
 
 .nav-header {
-  flex: 0 1 50%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
   z-index: 6;
+  -webkit-transition: all 300ms ease 0s;
   transition: all 300ms ease 0s;
 }
+
 @media (max-width: 768px) {
   .nav-header {
     position: fixed;
@@ -68,7 +83,9 @@
     border: 1px solid white;
     background-color: #3c3354;
     z-index: 3;
-    flex: 0 1 30%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 30%;
+            flex: 0 1 30%;
     padding: 70px 0 0 0;
   }
   .nav-header.active {
@@ -79,6 +96,7 @@
 .header__burger {
   display: none;
 }
+
 @media (max-width: 768px) {
   .header__burger {
     display: block;
@@ -94,15 +112,17 @@
     top: 9px;
     width: 100%;
     height: 2px;
+    -webkit-transition: all 300ms ease 0s;
     transition: all 300ms ease 0s;
   }
   .header__burger:before, .header__burger:after {
-    content: "";
+    content: '';
     background-color: #fff0f6;
     position: absolute;
     width: 100%;
     height: 2px;
     left: 0;
+    -webkit-transition: all 300ms ease 0s;
     transition: all 300ms ease 0s;
   }
   .header__burger:before {
@@ -112,17 +132,21 @@
     bottom: 0;
   }
   .header__burger.active span {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   .header__burger.active:before {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
     top: 9px;
   }
   .header__burger.active:after {
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
     bottom: 9px;
   }
 }
+
 @media (max-width: 400px) {
   .header__burger {
     margin-left: -50px;
@@ -131,13 +155,18 @@
 
 .nav-header__list {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   text-transform: uppercase;
   font-family: Roboto, monospace;
   margin: 0;
 }
+
 @media (max-width: 768px) {
   .nav-header__list {
     display: block;
@@ -154,9 +183,23 @@
   text-decoration: none;
   font-size: 18px;
 }
+
 .nav-header__item:hover {
   color: #dddbdb;
+  -webkit-transition: 150ms linear;
   transition: 150ms linear;
+}
+
+@media (max-width: 1010px) {
+  .nav-header__item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-header__item {
+    font-size: 18px;
+  }
 }
 
 .header__login {
@@ -175,13 +218,15 @@
   font-family: Roboto, monospace;
   color: white;
   cursor: pointer;
+  -webkit-transition: all 300ms ease 0s;
   transition: all 300ms ease 0s;
 }
+
 .login-header__button:hover {
   background-color: #785b91;
 }
+
 .login-header__button:active {
   background-color: #372647;
 }
-
 /*# sourceMappingURL=HeaderLayout.css.map */

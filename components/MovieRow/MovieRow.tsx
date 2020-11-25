@@ -31,7 +31,6 @@ export const MovieRow: React.FC<IMovieRow> = ({results, title, channel}) => {
                     <ul className="movie-row__list">
                         {results.map((result, index) => (
                             <MovieRowItem key={index}
-                                          title={result.title}
                                           id={result.id}
                                           poster_path={result.poster_path}/>
                         ))}

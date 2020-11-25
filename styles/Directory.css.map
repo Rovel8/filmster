@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,UAAU,EAAE,IAAI;EAChB,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,KAAK;CAAG",
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,UAAU,EAAE,IAAI;EAChB,UAAU,EAAE,KAAK;CAAG",
     "sources": [
         "Directory.sass"
     ],

@@ -15,6 +15,9 @@ export default function Personal({uid}) {
     
     useEffect(() => {
         firebase.firestore().doc(`users/${uid}`).onSnapshot(snapshot => {
+            if(!snapshot){
+                return
+            }
             setData(snapshot.data())
         })
     }, [])
@@ -26,8 +29,8 @@ export default function Personal({uid}) {
                 <main className="favorites__main">
                     <div className="favorites__container">
                         <ul className="favorites__list list-favorites">
-                            {data.favorites ? data.favorites.map((movie, index) => (
-                                <PersonalItem key={movie.id} setData={setData} id={movie.id} poster_path={movie.poster_path} />
+                            {data.favorites ? data.favorites.map((movie) => (
+                                <PersonalItem key={movie.id} id={movie.id} poster_path={movie.poster_path} />
                             )) : ''}
                         </ul>
                     </div>

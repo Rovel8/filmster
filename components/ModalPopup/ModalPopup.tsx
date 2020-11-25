@@ -1,12 +1,10 @@
 import Modal from 'react-modal';
-import React, {useEffect, useState, useContext} from "react";
-import {Field, Form, Formik} from "formik";
-import {CloseOutlined, EyeInvisibleOutlined} from "@ant-design/icons";
+import React from "react";
+import {Form, Formik} from "formik";
+import {CloseOutlined} from "@ant-design/icons";
 import 'firebase/auth'
 import firebase from 'firebase'
 import initFirebase from '../../assets/firebase';
-import { useRouter } from 'next/router';
-import { MyContext } from '../../pages/_app';
 
 
 

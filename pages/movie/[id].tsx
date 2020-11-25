@@ -6,7 +6,7 @@ import YouTube from "react-youtube";
 import firebase from 'firebase'
 import 'firebase/auth'
 import { MyContext } from "../_app";
-import { useContext } from 'react'
+import { useContext, useState } from 'react';
 
 interface IMovie {
     videos: {
@@ -56,19 +56,23 @@ interface IMovie {
     }
 }
 
-export default function Movie({query, movie, videos}: IMovie) {
+export default function Movie({movie, videos}: IMovie) {
 
     let youTubeVideoWidth = '100%';
     let youTubeVideoHeight = '390';
 
     const context = useContext(MyContext)
     const userId = context.userId
+    const [added, setAdded] = useState(false)
+    const [data, setData] = useState<any>({});
 
     const addToFavoriteList = () => {
         firebase.firestore().doc(`users/${userId}`).set({
             favorites: firebase.firestore.FieldValue.arrayUnion({id: movie.id, poster_path: movie.poster_path})
         }, {merge: true})
+        setAdded(true)
     }
+
 
     return (
             <HeaderLayout title={'movie'}>
@@ -94,7 +98,7 @@ export default function Movie({query, movie, videos}: IMovie) {
                                          <span>{movie.runtime} min</span>
                                     </div>
                                     <div className="movie__favorite favorite-movie">
-                                       {context.logged &&  <button onClick={() => addToFavoriteList()} className={'favorite-movie__button'}>
+                                       {context.logged &&  <button style={{color: added && 'green'}} onClick={() => addToFavoriteList()} className={'favorite-movie__button'}>
                                             <HeartOutlined className={'favorite-movie__icon'} />
                                             <span>Add to favorite</span>
                                         </button>}
@@ -132,7 +136,6 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            query,
             movie,
             videos
         }

@@ -26,7 +26,7 @@ export default function Channels({ query, movies, getUrl }) {
                             if (moviesList.length === index + 1) {
                                 return (
                                     <div className={'genre__item'} key={index} ref={lastMovieElementRef}>
-                                        <MovieRowItem title={movie.title}
+                                        <MovieRowItem
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>
@@ -34,7 +34,7 @@ export default function Channels({ query, movies, getUrl }) {
                             } else {
                                 return (
                                     <div key={index} className={'genre__item'}>
-                                        <MovieRowItem title={movie.title}
+                                        <MovieRowItem
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>

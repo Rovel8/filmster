@@ -21,7 +21,7 @@ export default function Search({getUrl, search}){
                             if(moviesList.length === index + 1){
                                 return(
                                     <div className={'list-search__item'} key={index} ref={lastMovieElementRef}>
-                                        <MovieRowItem title={movie.title}
+                                        <MovieRowItem
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>
@@ -29,7 +29,7 @@ export default function Search({getUrl, search}){
                             } else {
                                 return (
                                     <div key={index} className={'list-search__item'}>
-                                        <MovieRowItem title={movie.title}
+                                        <MovieRowItem
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>

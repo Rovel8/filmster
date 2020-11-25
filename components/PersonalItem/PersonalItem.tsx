@@ -7,10 +7,9 @@ import { useContext } from 'react';
 interface IPersonalItem{
     id: number
     poster_path: string
-    setData: (value: any) => void
 }
 
-export const PersonalItem: React.FC<IPersonalItem> = ({id, poster_path, setData}) => {
+export const PersonalItem: React.FC<IPersonalItem> = ({id, poster_path}) => {
 
     const context = useContext(MyContext)
 
@@ -19,7 +18,6 @@ export const PersonalItem: React.FC<IPersonalItem> = ({id, poster_path, setData}
             favorites: firebase.firestore.FieldValue.arrayRemove({id: id, poster_path: poster_path})
         }, {merge: true})
     }
-
     return (
         <>
             <li className={'personal-item__item'}>

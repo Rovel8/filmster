@@ -2,11 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import React, {useEffect, useState, useContext} from "react";
 import ModalPopup from "../ModalPopup/ModalPopup";
-import {Field, Form} from "formik";
+import {Field} from "formik";
 import {EyeInvisibleOutlined} from "@ant-design/icons";
 import 'firebase/auth'
 import firebase from 'firebase'
-import { useRouter } from "next/router";
 import { MyContext } from "../../pages/_app";
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -62,10 +61,10 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
             <header className={'header'}>
                 <ModalPopup formTitle={'Authorize'} setModal={setModal} modal={modal}>
                     <div className={'form-modal__item'}>
-                        <Field className={'form-item'} placeholder={'Email'} name={'email'} id={'email'} type={'email'} />
+                        <Field required={true} className={'form-item'} placeholder={'Email'} name={'email'} id={'email'} type={'email'} />
                     </div>
                     <div className={'form-modal__item'}>
-                        <Field placeholder={'Password'} className={'form-login__password form-item'} name={'password'} id={'password'} type={'password'} />
+                        <Field required={true} placeholder={'Password'} className={'form-login__password form-item'} name={'password'} id={'password'} type={'password'} />
                         <span onClick={() => showPass()} className={'form-login__show'}><EyeInvisibleOutlined /></span>
                     </div>
                     <button type={'submit'} className={'form-login__button'}>Log In or Sign Up</button>

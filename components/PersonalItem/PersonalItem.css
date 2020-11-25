@@ -1,0 +1,81 @@
+.personal-item__item {
+  line-height: 0;
+  position: relative;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.personal-item__item .personal-item__view-button {
+  display: none;
+}
+
+.personal-item__item .personal-item__btn-remove {
+  display: none;
+}
+
+.personal-item__item:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.personal-item__item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.personal-item__item:hover .personal-item__view-button {
+  top: 45%;
+  left: 45%;
+  margin-left: -20px;
+  margin-top: -15px;
+}
+
+.personal-item__item:hover .personal-item__btn-remove {
+  top: 55%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -15px;
+}
+
+.personal-item__item:hover .personal-item__view-button,
+.personal-item__item:hover .personal-item__btn-remove {
+  font-weight: 700;
+  color: white;
+  display: block;
+  position: absolute;
+  z-index: 10;
+  background: none;
+  line-height: 28px;
+  padding: 0 15px;
+  border: 1px solid white;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease 0s;
+  transition: all 200ms ease 0s;
+  outline: none;
+}
+
+.personal-item__item:hover .personal-item__view-button:hover,
+.personal-item__item:hover .personal-item__btn-remove:hover {
+  background: #5a4070;
+}
+
+.personal-item__item:hover .personal-item__view-button:active,
+.personal-item__item:hover .personal-item__btn-remove:active {
+  background-color: #372647;
+}
+
+.personal-item__item:hover:before, .personal-item__item:hover:after {
+  opacity: 1;
+}
+/*# sourceMappingURL=PersonalItem.css.map */
