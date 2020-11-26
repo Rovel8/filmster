@@ -12,19 +12,19 @@ export default function Home({popular, upcoming, topRated, dramas, comedy}) {
                     <SearchInput/>
                 </section>
                 <section className={'main__popular'}>
-                    <MovieRow channel={'Most Popular'} title={'MOST POPULAR'} results={popular.results}/>
+                    <MovieRow channel={'mostpopular'} title={'MOST POPULAR'} results={popular.results}/>
                 </section>
                 <section className={'main__new-releases'}>
-                    <MovieRow channel={'Upcoming'} title={'UPCOMING'} results={upcoming.results}/>
+                    <MovieRow channel={'upcoming'} title={'UPCOMING'} results={upcoming.results}/>
                 </section>
                 <section className={'main__top-rated'}>
-                    <MovieRow channel={'Top Rated'} title={'TOP RATED'} results={topRated.results} />
+                    <MovieRow channel={'toprated'} title={'TOP RATED'} results={topRated.results} />
                 </section>
                 <section className={'main__dramas'}>
-                    <MovieRow channel={'18'} title={'DRAMAS'} results={dramas.results} />
+                    <MovieRow channel={'channel/18'} title={'DRAMAS'} results={dramas.results} />
                 </section>
                 <section>
-                    <MovieRow channel={'35'} title={'COMEDY'} results={comedy.results} />
+                    <MovieRow channel={'channel/35'} title={'COMEDY'} results={comedy.results} />
                 </section>
             </main>
         </HeaderLayout>

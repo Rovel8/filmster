@@ -80,7 +80,7 @@ export const HeaderLayout: React.FC<IHeaderLayout> = ({title, children}) => {
                     </div>
                     <nav className={'header__nav nav-header'}>
                         <ul className={'nav-header__list'}>
-                            <li><Link href={'/channels/Upcoming'}><a className={'nav-header__item'}>Upcoming</a></Link>
+                            <li><Link href={'/channels/upcoming'}><a className={'nav-header__item'}>Upcoming</a></Link>
                             </li>
                             <li><Link href='/'><a className={'nav-header__item'}>Home</a></Link></li>
                             <li><Link href={'/directory'}><a className={'nav-header__item'}>Directory</a></Link></li>
