@@ -1,10 +1,10 @@
-import {IMovieRowItem, MovieRowItem} from "../MovieRowItem/MovieRowItem";
+import {IMovieItem, MovieItem} from "../MovieItem/MovieItem";
 import Link from "next/link";
 import {useEffect} from "react";
 
 
 interface IMovieRow{
-    results: Array<IMovieRowItem>
+    results: Array<IMovieItem>
     title: string
     channel?: string
 }
@@ -29,8 +29,8 @@ export const MovieRow: React.FC<IMovieRow> = ({results, title, channel}) => {
                 <h2 className="movie-row__title"><Link href={`/channels/${channel}`}><a>{title}</a></Link></h2>
                 <div className="movie-row__content">
                     <ul className="movie-row__list">
-                        {results.map((result, index) => (
-                            <MovieRowItem key={index}
+                        {results.map((result) => (
+                            <MovieItem    key={result.id}
                                           id={result.id}
                                           poster_path={result.poster_path}/>
                         ))}

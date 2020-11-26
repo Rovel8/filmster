@@ -1,12 +1,12 @@
 import React from 'react'
 import { homeRequests } from '../../API/API_HomePage';
-import ChannelsView from '../../components/ChannelsView/ChannelsView'
+import {MovieList} from '../../components/MovieList/MovieList'
 import { GetServerSideProps } from 'next'
 
 function MostPopular({movies, getUrl}) {
     return (
         <>
-          <ChannelsView movies={movies} title={'Most Popular'} getUrl={getUrl} />  
+          <MovieList movies={movies} title={'Most Popular'} getUrl={getUrl} />  
         </>
     )
 }

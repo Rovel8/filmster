@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import React, {useEffect, useState, useContext} from "react";
-import ModalPopup from "../ModalPopup/ModalPopup";
+import {ModalPopup} from "../ModalPopup/ModalPopup";
 import {Field} from "formik";
 import {EyeInvisibleOutlined} from "@ant-design/icons";
 import 'firebase/auth'

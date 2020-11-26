@@ -1,11 +1,11 @@
 import { genreRequests } from "../../../API/API_Genre";
 import { genres } from "../../../assets/genres";
-import ChannelsView from "../../../components/ChannelsView/ChannelsView";
+import {MovieList} from "../../../components/MovieList/MovieList";
 
 export default function Channels({ movies, getUrl, title }) {
 
     return (
-       <ChannelsView movies={movies} getUrl={getUrl} title={title} />
+       <MovieList movies={movies} getUrl={getUrl} title={title} />
     )
 }
 

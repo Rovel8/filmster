@@ -30,7 +30,13 @@ const customStyles={
 
 initFirebase()
 
-export default function ModalPopup({modal, setModal, children, formTitle}){
+interface IModalPopup{
+    modal: boolean
+    setModal: (value: boolean) => void
+    formTitle: string
+}
+
+export const ModalPopup: React.FC<IModalPopup> = ({modal, setModal, children, formTitle}) => {
 
     const onSubmit = ({email, password}) => {
         firebase.auth().setPersistence('local').then(() => {

@@ -64,7 +64,6 @@ export default function Movie({movie, videos}: IMovie) {
     const context = useContext(MyContext)
     const userId = context.userId
     const [added, setAdded] = useState(false)
-    const [data, setData] = useState<any>({});
 
     const addToFavoriteList = () => {
         firebase.firestore().doc(`users/${userId}`).set({

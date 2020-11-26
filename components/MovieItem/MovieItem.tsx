@@ -1,17 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
-export interface IMovieRowItem {
+export interface IMovieItem{
+    adult?: boolean
+    backdrop_path?: string
+    genre_ids?: Array<number>
     id: number
-    poster_path: string
+    original_language?: string
+    original_title?: string
+    overview?: string
+    popularity?: number
+    poster_path:string
+    release_date?: string
+    title?: string
+    video?: boolean
+    vote_average?: number
+    vote_count?: number
 }
 
-export const MovieRowItem: React.FC<IMovieRowItem> = ({
-    id,
-    poster_path
-}) => {
-
-    const addDefaultImg = (e) => {
-    }
+export const MovieItem: React.FC<IMovieItem> = ({ id, poster_path, title }) => {
 
     return (
         <>
@@ -21,8 +27,9 @@ export const MovieRowItem: React.FC<IMovieRowItem> = ({
                         <Image
                             key={id}
                             className={'movie-item__image'}
-                               onError={(e) => addDefaultImg(e)}
+                            onError={() => console.log('error')}
                             width={220}
+                            alt={title}
                             height={350}
                             src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         />

@@ -1,11 +1,26 @@
 import React from 'react'
 import { HeaderLayout } from '../layouts/HeaderLayout'
-import { MovieRowItem } from '../MovieRowItem/MovieRowItem'
+import { MovieItem, IMovieItem } from '../MovieItem/MovieItem'
 import { useState } from 'react';
 import useGenreMovies from '../../hooks/useGenreMovies';
 import useLastElement from '../../hooks/useLastElement';
 
-function ChannelsView({movies, getUrl, title}) {
+interface IMoviesList{
+    movies: {
+        dates:{
+            minimum: string
+            maximum: string
+        }
+        page: number
+        results: Array<IMovieItem>
+        total_pages: number
+        total_results: number
+    }
+    getUrl: string
+    title?: string
+}
+
+export const MovieList: React.FC<IMoviesList> = ({movies, getUrl, title}) => {
 
     const [pageNumber, setPageNumber] = useState<number>(1);
     const { loading, error, hasMore, moviesList } = useGenreMovies(pageNumber, getUrl, movies.total_results)
@@ -21,7 +36,7 @@ function ChannelsView({movies, getUrl, title}) {
                             if (moviesList.length === index + 1) {
                                 return (
                                     <div className={'genre__item'} key={index} ref={lastMovieElementRef}>
-                                        <MovieRowItem
+                                        <MovieItem    title={movie.title}
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>
@@ -29,7 +44,7 @@ function ChannelsView({movies, getUrl, title}) {
                             } else {
                                 return (
                                     <div key={index} className={'genre__item'}>
-                                        <MovieRowItem
+                                        <MovieItem    title={movie.title}
                                                       poster_path={movie.poster_path}
                                                       id={movie.id} />
                                     </div>
@@ -43,5 +58,3 @@ function ChannelsView({movies, getUrl, title}) {
         </HeaderLayout>
     )
 }
-
-export default ChannelsView

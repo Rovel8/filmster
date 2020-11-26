@@ -12,7 +12,6 @@ export const SearchInput = () => {
     }
 
     const onSubmit = (value) => {
-        console.log(value)
         router.push(`/search/${value.search}`)
     }
 
